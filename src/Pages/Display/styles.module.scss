@@ -1,0 +1,14 @@
+.Dashboard {
+  display: flex;
+  width: 90%;
+  margin: 2em auto 0;
+
+  .Sidebar {
+    flex: 1;
+  }
+
+  .Container {
+    flex: 3;
+    max-width: 75%;
+  }
+}

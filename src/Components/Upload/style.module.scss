@@ -1,0 +1,62 @@
+.Upload {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 1em 2em;
+
+  h2 {
+    margin: 0;
+  }
+
+  .fileInput {
+    margin: 1em 0;
+    border: 1px solid #dedede;
+    color: #000000;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 2em 0;
+  }
+
+  &Form {
+    input {
+      display: block;
+      width: 100%;
+      height: 45px;
+      border-radius: 7px;
+      font-size: 1em;
+      margin: 0.3em auto 1em;
+      outline: none;
+      border: none;
+      box-sizing: border-box;
+      box-shadow: 0 0 0 1px #c5cee0 inset, 0 0 0 2px transparent;
+      border-radius: 8px;
+      transition: box-shadow 0.2s ease-out;
+      transition-property: box-shadow;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-out;
+      transition-delay: 0s;
+      padding-left: 1em;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px #3598db inset, 0 0 0 2px transparent;
+      }
+    }
+
+    button {
+      width: 100%;
+      background-color: #3598db;
+      outline: none;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2em;
+      color: #ffffff;
+      padding: 0.5em 0;
+      font-weight: 900;
+      cursor: pointer;
+    }
+  }
+}

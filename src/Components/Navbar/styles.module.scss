@@ -4,7 +4,7 @@
   justify-content: space-between;
   padding: 0.5em 2em;
   width: 100%;
-  position: absolute;
+  // position: absolute;
   box-sizing: border-box;
   z-index: 100;
 
@@ -12,7 +12,7 @@
     margin: 0;
 
     a {
-      color:  #8247e5;
+      color:  #3598db;
       text-decoration: none;
     }
   }
@@ -25,14 +25,14 @@
     border: none;
     border-radius: 25px;
     padding:  .5em;
-    color: #8247e5;
+    color: #3598db;
     width: 120px;
     background-color: #ffffff;
     cursor: pointer;
       background-color: darken($color: #ffffff, $amount: 3);
 
     &:disabled {
-      background-color: #8247e5;
+      background-color: #3598db;
       color: #ffffff;
       cursor: not-allowed;
     }

@@ -1,0 +1,69 @@
+.loginContainer {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  div {
+    flex: 1;
+
+    &.ImageBanner {
+      background-image: url("../../assets/ipfs.jpeg");
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+
+      background-position: 50%;
+      background-size: cover;
+      background-color: rgba(50, 50, 50, 0.8);
+      background-blend-mode: multiply;
+    }
+
+    &.loginForm {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &Content {
+        margin: auto;
+        width: fit-content;
+        flex: none;
+
+        h2,
+        p {
+          margin: 0;
+        }
+
+        h2 {
+          font-size: 4.5em;
+          
+          a {
+            color: #ffffff;
+            text-shadow: -1px 1px 0 #3598db, 1px 1px 0 #3598db, 1px -1px 0 #3598db,
+              -1px -1px 0 #3598db;
+          }
+        }
+
+        p {
+          margin-top: -1.5em;
+        }
+
+        button {
+          outline: none;
+          border: none;
+          border-radius: 30px;
+          background-color: #3598db;
+          color: #ffffff;
+          padding: 0.8em;
+          cursor: pointer;
+          font-size: 0.9em;
+          cursor: pointer;
+          width: 100%;
+          font-size: 1.2em;
+          margin-top: 1.5em;
+        }
+      }
+    }
+  }
+}
