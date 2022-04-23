@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { useDropzone } from "react-dropzone";
 import { useMoralis, useNewMoralisObject } from "react-moralis";
 import styles from "./style.module.scss";
@@ -7,10 +8,25 @@ function Upload() {
   const [uploadSize, setUploadSize] = useState(0);
   const [requiredUpload, setRequiredUpload] = useState(null);
   const [uploadName, setUploadName] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
   const { Moralis, user } = useMoralis();
-  const { save } = useNewMoralisObject("ipfsManager");
+  const { save } = useNewMoralisObject("IPFSManager");
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
 
   const onDrop = useCallback(async (acceptedFiles) => {
+    if (isUploading) return;
+
     let folderSize = 0;
     const binaryFolderArray = [];
 
@@ -51,9 +67,15 @@ function Upload() {
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
+    setIsUploading(true);
+
     console.log(requiredUpload);
 
-    let ipfs_hash;
+    const data = {
+      size: uploadSize,
+      name: uploadName,
+      owner: user,
+    };
 
     if (requiredUpload.length === 1) {
       const base64 = requiredUpload[0].content;
@@ -62,7 +84,8 @@ function Upload() {
         base64,
       });
       await file.saveIPFS();
-      ipfs_hash = file._hash;
+      data.cID = file._hash;
+      data.type = "File";
     } else {
       const options = {
         abi: requiredUpload,
@@ -73,18 +96,21 @@ function Upload() {
 
       const ipfsHash = uploadedData[0].path.split("/")[4];
       console.log(uploadedData);
-      ipfs_hash = ipfsHash;
+      data.cID = ipfsHash;
+      data.type = "Folder";
     }
 
-    const data = {
-      ipfs_hash,
-      size: uploadSize,
-      name: uploadName,
-      owner: user
-    };
-
     save(data, {
-      onSuccess: (savedData) => console.log("savedData", savedData),
+      onSuccess: (savedData) => {
+        setRequiredUpload(null);
+        setIsUploading(false);
+        setUploadName("");
+        Toast.fire({
+          icon: "success",
+          title: "File uploaded successfully",
+        });
+        console.log("savedData", savedData);
+      },
       onError: (error) => console.log("Error", error),
     });
   };
@@ -114,8 +140,33 @@ function Upload() {
         )}
       </div>
       <form className={styles.UploadForm} onSubmit={formSubmitHandler}>
-        <input value={uploadName} onChange={nameChangeHandler} />
-        <button type="submit">Upload</button>
+        <label htmlFor="uploadName">File Name:</label>
+        <input
+          id="uploadName"
+          value={uploadName}
+          onChange={nameChangeHandler}
+        />
+        <button
+          type="submit"
+          disabled={!!!uploadName || !!!requiredUpload || isUploading}
+        >
+          Upload
+        </button>
+        {isUploading && (
+          <span
+            style={{
+              display: "block",
+              textAlign: "center",
+              margin: "2em 0",
+            }}
+          >
+            Depending on the size of your upload, this process may take some
+            time.
+            <br />
+            <br />
+            Please do not leave this page until the upload is completed.
+          </span>
+        )}
       </form>
     </div>
   );

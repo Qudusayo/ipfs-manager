@@ -1,10 +1,12 @@
-.Card{
+.Card {
   width: 28%;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: #ffffff;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   padding: 1em;
   border-radius: 7px;
 
-  h1{
+  h1 {
     margin: 0;
     text-align: center;
     font-size: 4em;

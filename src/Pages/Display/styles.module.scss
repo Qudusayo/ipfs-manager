@@ -1,14 +1,17 @@
-.Dashboard {
-  display: flex;
-  width: 90%;
-  margin: 2em auto 0;
+.Display {
+  width: 100%;
+  margin: auto;
+  background-color: #f8f8fb;
+  min-height: 100vh;
 
   .Sidebar {
-    flex: 1;
+    position: sticky;
+    width: 100%;
+    top: 0;
   }
 
   .Container {
-    flex: 3;
-    max-width: 75%;
+    width: 80%;
+    margin: auto;
   }
 }

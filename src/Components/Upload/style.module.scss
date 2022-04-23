@@ -1,6 +1,9 @@
 .Upload {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 1em 2em;
+  margin-top: 2em;
+  background-color: #ffffff;
+  border-radius: 7px;
 
   h2 {
     margin: 0;
@@ -42,13 +45,13 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 1px #3598db inset, 0 0 0 2px transparent;
+        box-shadow: 0 0 0 1px #8247e5 inset, 0 0 0 2px transparent;
       }
     }
 
     button {
       width: 100%;
-      background-color: #3598db;
+      background-color: #8247e5;
       outline: none;
       border: none;
       border-radius: 12px;
@@ -57,6 +60,12 @@
       padding: 0.5em 0;
       font-weight: 900;
       cursor: pointer;
+
+      &:disabled{
+        cursor: not-allowed;
+
+        background-color: lighten($color: #8247e5, $amount: 20%);
+      }
     }
   }
 }

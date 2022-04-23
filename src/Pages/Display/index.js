@@ -5,15 +5,14 @@ import Upload from "../../Components/Upload/Index";
 
 import styles from "./styles.module.scss";
 
-function Display({ path }) {
-
+function Display({ path, tableData }) {
   return (
-    <div className={styles.Dashboard}>
+    <div className={styles.Display}>
       <div className={styles.Sidebar}>
         <Sidebar />
       </div>
       <div className={styles.Container}>
-        {path === "dashboard" && <Dashboard />}
+        {path === "dashboard" && <Dashboard tableData={tableData} />}
         {path === "upload" && <Upload />}
       </div>
     </div>
