@@ -61,7 +61,7 @@
       font-weight: 900;
       cursor: pointer;
 
-      &:disabled{
+      &:disabled {
         cursor: not-allowed;
 
         background-color: lighten($color: #8247e5, $amount: 20%);

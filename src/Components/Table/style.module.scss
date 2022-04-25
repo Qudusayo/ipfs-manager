@@ -8,7 +8,6 @@
   max-height: 500px;
   overflow-y: auto;
 
-
   &Heading {
     display: flex;
     align-items: center;
@@ -136,7 +135,7 @@
             position: absolute;
             width: 9em;
             left: -5.5em;
-            
+
             span {
               padding: 1em;
               color: #000000;
@@ -144,7 +143,7 @@
               margin: 0.5em 0;
               text-decoration: none;
 
-              &:focus{
+              &:focus {
                 background-color: red;
               }
 

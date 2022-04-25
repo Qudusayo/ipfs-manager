@@ -1,22 +1,22 @@
 .Dashboard {
   padding: 2em 0;
 
-  .hr{
+  .hr {
     border-bottom: 1px solid #cacaca;
   }
-  
+
   .Cards {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-bottom: 2em;
   }
-  
+
   .Table {
     border-radius: 12px;
     background-color: #ffffff;
     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
-    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+      rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     min-height: 30em;
   }
 }

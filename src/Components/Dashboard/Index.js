@@ -13,10 +13,10 @@ function Dashboard({ tableData }) {
   useEffect(() => {
     if (tableData.length) {
       const files = tableData.filter(
-        (type) => type.type.toLowerCase() === "file"
+        (type) => type.type.toLowerCase() === "file",
       );
       const folders = tableData.filter(
-        (type) => type.type.toLowerCase() === "folder"
+        (type) => type.type.toLowerCase() === "folder",
       );
       setDataCount({
         files: files.length,

@@ -3,7 +3,11 @@ import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 import Login from "./Pages/Login";
 import Display from "./Pages/Display";
-import { useMoralis, useMoralisQuery, useMoralisSubscription } from "react-moralis";
+import {
+  useMoralis,
+  useMoralisQuery,
+  useMoralisSubscription,
+} from "react-moralis";
 import { useEffect, useState } from "react";
 import { digital } from "units-converter";
 import moment from "moment";
@@ -16,7 +20,10 @@ function App() {
     "IPFSManager",
     (query) => query.equalTo("owner", user),
     [user],
-    { autoFetch: true, live: true }
+    {
+      autoFetch: true,
+      live: true,
+    },
   );
 
   useEffect(() => {
@@ -32,7 +39,7 @@ function App() {
     }
 
     data &&
-      data.forEach((_data) => {
+      [...data].reverse().forEach((_data) => {
         let unit = digital(_data.get("size")).from("b").toBest();
         init.push({
           name: _data.get("name"),
