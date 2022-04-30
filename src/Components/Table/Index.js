@@ -3,12 +3,15 @@ import styles from "./style.module.scss";
 
 import eye from "./../../assets/icons/eye.svg";
 import copy from "./../../assets/icons/copy.svg";
+import { useMoralis } from "react-moralis";
+import Swal from "sweetalert2";
 
 function Table({ tableData }) {
   const [display, setDisplay] = useState({
     visibility: false,
     index: 0,
   });
+  const { Moralis } = useMoralis();
 
   const copyToClipboard = async (value) => {
     try {
@@ -31,6 +34,39 @@ function Table({ tableData }) {
         index,
       });
     }
+  };
+
+  const deleteRow = async (cID) => {
+    Swal.fire({
+      title: "Are you sure you want to remove this file?",
+      html: `<small>${cID}</small><p>You won't be able to revert this!</p>`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+
+    // const IPFSManager = Moralis.Object.extend("IPFSManager");
+    // const query = new Moralis.Query(IPFSManager);
+    // query.equalTo("cID", cID);
+    // const result = await query.find();
+    // if (result.length) {
+    //   result[0].destroy().then(
+    //     (myObject) => {
+    //       console.log(myObject);
+    //       alert("Deleted");
+    //     },
+    //     (error) => {
+    //       alert("Error Deleting Data");
+    //       console.log(error);
+    //     },
+    //   );
+    // }
   };
 
   return (
@@ -92,7 +128,7 @@ function Table({ tableData }) {
                     }}
                   >
                     <span>Edit Details</span>
-                    <span>Delete File</span>
+                    <span onClick={() => deleteRow(data.cID)}>Delete File</span>
                   </div>
                 </td>
               </tr>

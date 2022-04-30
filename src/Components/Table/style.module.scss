@@ -5,7 +5,7 @@
   overflow-x: scroll;
   padding: 1em 2em 2em;
   margin-top: 2em;
-  max-height: 500px;
+  min-height: inherit;
   overflow-y: auto;
 
   &Heading {
